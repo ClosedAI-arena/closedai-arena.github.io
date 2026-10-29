@@ -99,9 +99,9 @@ $('invite').onclick=async()=>{
 };
 $('home').onclick=()=>{state=null;history.replaceState(null,'',location.pathname);location.reload();};
 $('download').onclick=()=>{
-  const text=`CloseAI 房间 ${state.room}\n`+state.logs.map(l=>`回合 ${l.turn} 公司 ${letters[l.player]}：${l.text}`).join('\n');
+  const text=`ClosedAI 房间 ${state.room}\n`+state.logs.map(l=>`回合 ${l.turn} 公司 ${letters[l.player]}：${l.text}`).join('\n');
   const url=URL.createObjectURL(new Blob(['\ufeff'+text],{type:'text/plain;charset=utf-8'}));
-  const a=document.createElement('a');a.href=url;a.download=`CloseAI_${state.room}.txt`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  const a=document.createElement('a');a.href=url;a.download=`ClosedAI_${state.room}.txt`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
 };
 const initial=new URLSearchParams(location.search).get('room');
 if(initial) $('room-input').value=initial.toUpperCase();
